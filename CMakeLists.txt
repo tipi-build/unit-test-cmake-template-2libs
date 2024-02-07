@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
 add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
+add_library(MathFunctionscbrt::MathFunctionscbrt ALIAS MathFunctionscbrt)
 
 target_include_directories(MathFunctionscbrt
                            PUBLIC
@@ -20,6 +21,7 @@ target_include_directories(MathFunctionscbrt
 
 
 add_library(MathFunctions STATIC MathFunctions.cxx)
+add_library(MathFunctions::MathFunctions ALIAS MathFunctions)
 
 target_include_directories(MathFunctions
                            PUBLIC
