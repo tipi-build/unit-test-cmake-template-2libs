@@ -21,7 +21,7 @@ target_include_directories(MathFunctionscbrt
 
 target_link_libraries(MathFunctionscbrt OpenSSL::SSL OpenSSL::Crypto )
 check_library_exists("OpenSSL::SSL" check_ssl "${CMAKE_LIBRARY_PATH}" output_var_ssl)
-check_library_exists("OpenSSL::SSL" check_crypto "${CMAKE_LIBRARY_PATH}" output_var_ssl)
+check_library_exists("OpenSSL::SSL" check_crypto "${CMAKE_LIBRARY_PATH}" output_var_crypto)
 
 install(TARGETS MathFunctionscbrt
         EXPORT MathFunctionscbrtTargets
