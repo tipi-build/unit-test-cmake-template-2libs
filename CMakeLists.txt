@@ -8,13 +8,8 @@ include(GNUInstallDirs)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-if (NOT DEFINED TIPI_TEAM)
-message(FATAL_ERROR "you need to define TIPI_TEAM")
-endif()
+include(CheckIncludeFiles)
 
-if (NOT DEFINED TIPI_TEAM_ZURICH)
-message(FATAL_ERROR "you need to define TIPI_TEAM_ZURICH")
-endif()
 
 add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
 
@@ -62,3 +57,11 @@ install(EXPORT MathFunctionsTargets
         NAMESPACE MathFunctions::
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MathFunctions
 )
+
+
+list(APPEND CMAKE_REQUIRED_LIBRARIES ZLIB::ZLIB)
+check_include_files(stdint.h CHECK_ZLIB_AND_STDINT)
+
+if(NOT ${CHECK_ZLIB_AND_STDINT})
+  message(FATAL_ERROR "ZLIB was not build in configure")
+endif()
