@@ -3,18 +3,12 @@ project(MathFunctions)
 
 # make cache variables for install destinations
 include(GNUInstallDirs)
+include(CheckLibraryExists)
+
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-if (NOT DEFINED TIPI_TEAM)
-message(FATAL_ERROR "you need to define TIPI_TEAM")
-endif()
-
-if (NOT DEFINED TIPI_TEAM_ZURICH)
-message(FATAL_ERROR "you need to define TIPI_TEAM_ZURICH")
-endif()
 
 add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
 
@@ -24,6 +18,10 @@ target_include_directories(MathFunctionscbrt
                            "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
+
+target_link_libraries(MathFunctionscbrt OpenSSL::SSL OpenSSL::Crypto )
+check_library_exists("OpenSSL::SSL" check_ssl "${CMAKE_LIBRARY_PATH}" output_var_ssl)
+check_library_exists("OpenSSL::SSL" check_crypto "${CMAKE_LIBRARY_PATH}" output_var_ssl)
 
 install(TARGETS MathFunctionscbrt
         EXPORT MathFunctionscbrtTargets
