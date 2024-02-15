@@ -59,12 +59,12 @@ install(EXPORT MathFunctionsTargets
 )
 
 
-list(APPEND CMAKE_REQUIRED_LIBRARIES ZLIB::ZLIB)
-check_include_files(stdint.h CHECK_ZLIB_AND_STDINT)
-message("Check value of  CHECK_ZLIB_AND_STDINT : ${CHECK_ZLIB_AND_STDINT}")
+list(APPEND CMAKE_REQUIRED_LIBRARIES Iconv::Iconv)
+check_include_files(stdint.h CHECK_ICONV_AND_STDINT)
+message("Check value of  CHECK_ICONV_AND_STDINT : ${CHECK_ICONV_AND_STDINT}")
 
-if (CHECK_ZLIB_AND_STDINT)
+if (CHECK_ICONV_AND_STDINT)
   message(STATUS "stdint.h is found")
 else()
-  message(FATAL_ERROR "ZLIB was not build in configure")    
+  message(FATAL_ERROR "Iconv was not build in configure")    
 endif()
