@@ -64,6 +64,7 @@ check_include_files(stdint.h CHECK_ZLIB_AND_STDINT)
 message("Check value of  CHECK_ZLIB_AND_STDINT : ${CHECK_ZLIB_AND_STDINT}")
 
 
-if(NOT ${CHECK_ZLIB_AND_STDINT})
+
+if(NOT DEFINED CHECK_ZLIB_AND_STDINT)
   message(FATAL_ERROR "ZLIB was not build in configure")
 endif()
