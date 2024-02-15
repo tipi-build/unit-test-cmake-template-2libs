@@ -59,12 +59,12 @@ install(EXPORT MathFunctionsTargets
 )
 
 
-list(APPEND CMAKE_REQUIRED_LIBRARIES Iconv::Iconv)
-check_include_files(stdint.h CHECK_ICONV_AND_STDINT)
-message("Check value of  CHECK_ICONV_AND_STDINT : ${CHECK_ICONV_AND_STDINT}")
+list(APPEND CMAKE_REQUIRED_LIBRARIES OpenSSL::SSL)
+check_include_files(stdint.h CHECK_OPENSSL_AND_STDINT)
+message("Check value of  CHECK_OPENSSL_AND_STDINT : ${CHECK_OPENSSL_AND_STDINT}")
 
-if (CHECK_ICONV_AND_STDINT)
+if (CHECK_OPENSSL_AND_STDINT)
   message(STATUS "stdint.h is found")
 else()
-  message(FATAL_ERROR "Iconv was not build in configure")    
+  message(FATAL_ERROR "OpenSSL was not build in configure")    
 endif()
