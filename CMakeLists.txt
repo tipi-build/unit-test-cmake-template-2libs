@@ -11,6 +11,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include(CheckIncludeFiles)
 
 
+find_package(Iconv REQUIRED)
+
 add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
 
 target_include_directories(MathFunctionscbrt
@@ -57,14 +59,3 @@ install(EXPORT MathFunctionsTargets
         NAMESPACE MathFunctions::
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MathFunctions
 )
-
-
-list(APPEND CMAKE_REQUIRED_LIBRARIES ZLIB::ZLIB)
-check_include_files(stdint.h CHECK_ZLIB_AND_STDINT)
-message("Check value of  CHECK_ZLIB_AND_STDINT : ${CHECK_ZLIB_AND_STDINT}")
-
-if (CHECK_ZLIB_AND_STDINT)
-  message(STATUS "stdint.h is found")
-else()
-  message(FATAL_ERROR "ZLIB was not build in configure")    
-endif()
