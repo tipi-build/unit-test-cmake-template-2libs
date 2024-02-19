@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include(CheckIncludeFiles)
 
 
-find_package(Iconv REQUIRED)
+find_package(ZLIB REQUIRED)
 
 add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
 
