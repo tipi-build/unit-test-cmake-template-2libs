@@ -8,12 +8,12 @@ include(GNUInstallDirs)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-if (NOT DEFINED TIPI_TEAM)
-message(FATAL_ERROR "you need to define TIPI_TEAM")
+if (NOT DEFINED SOME_BUILD_OPTION)
+ message(FATAL_ERROR "you need to define SOME_BUILD_OPTION")
 endif()
 
-if (NOT DEFINED TIPI_TEAM_ZURICH)
-message(FATAL_ERROR "you need to define TIPI_TEAM_ZURICH")
+if (NOT DEFINED SOME_OTHER_BUILD_OPTION)
+ message(FATAL_ERROR "you need to define SOME_OTHER_BUILD_OPTION")
 endif()
 
 add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
