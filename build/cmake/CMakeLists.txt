@@ -8,19 +8,11 @@ include(GNUInstallDirs)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-if (NOT DEFINED SOME_BUILD_OPTION)
- message(FATAL_ERROR "you need to define SOME_BUILD_OPTION")
-endif()
-
-if (NOT DEFINED SOME_OTHER_BUILD_OPTION)
- message(FATAL_ERROR "you need to define SOME_OTHER_BUILD_OPTION")
-endif()
-
-add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
+add_library(MathFunctionscbrt STATIC ${CMAKE_CURRENT_LIST_DIR}/../../MathFunctionscbrt.cxx)
 
 target_include_directories(MathFunctionscbrt
                            PUBLIC
-                           "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
+                           "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../../>"
                            "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
@@ -33,17 +25,17 @@ install(TARGETS MathFunctionscbrt
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-install(FILES MathFunctionscbrt.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES ${CMAKE_CURRENT_LIST_DIR}/../../MathFunctionscbrt.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(EXPORT MathFunctionscbrtTargets
         FILE MathFunctionscbrtTargets.cmake
         NAMESPACE MathFunctionscbrt::
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MathFunctionscbrt
 )
-add_library(MathFunctions STATIC MathFunctions.cxx)
+add_library(MathFunctions STATIC ${CMAKE_CURRENT_LIST_DIR}/../../MathFunctions.cxx)
 
 target_include_directories(MathFunctions
                            PUBLIC
-                           "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
+                           "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../../>"
                            "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
@@ -56,7 +48,7 @@ install(TARGETS MathFunctions
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-install(FILES MathFunctions.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES ${CMAKE_CURRENT_LIST_DIR}/../../MathFunctions.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(EXPORT MathFunctionsTargets
         FILE MathFunctionsTargets.cmake
         NAMESPACE MathFunctions::
