@@ -10,8 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 include(CheckIncludeFiles)
 
-
-find_package(Iconv REQUIRED)
+# this should be provided by Hermetic FetchContent
+find_package(HfcDependencyProvidedLib REQUIRED)
 
 add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
 
@@ -37,6 +37,7 @@ install(EXPORT MathFunctionscbrtTargets
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MathFunctionscbrt
 )
 add_library(MathFunctions STATIC MathFunctions.cxx)
+target_link_libraries(MathFunctions HfcDependencyProvidedLib::HfcDependencyProvidedLib)
 
 target_include_directories(MathFunctions
                            PUBLIC
