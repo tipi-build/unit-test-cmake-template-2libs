@@ -27,7 +27,7 @@ install(TARGETS MathFunctionscbrt
 
 install(FILES MathFunctionscbrt.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(EXPORT MathFunctionscbrtTargets
-        FILE MathFunctionscbrtTargets.cmake
+        FILE mathlib_functionscbrt_unexpected.cmake
         NAMESPACE MathFunctionscbrt::
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MathFunctionscbrt
 )
@@ -50,7 +50,7 @@ install(TARGETS MathFunctions
 
 install(FILES MathFunctions.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(EXPORT MathFunctionsTargets
-        FILE MathFunctionsTargets.cmake
+        FILE mathlib_functions_unexpected.cmake # <- this is the test case bit
         NAMESPACE MathFunctions::
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MathFunctions
 )
