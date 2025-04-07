@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.27.6)
 project(MathFunctions)
 
 # make cache variables for install destinations
@@ -57,12 +57,3 @@ install(EXPORT MathFunctionsTargets
         NAMESPACE MathFunctions::
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MathFunctions
 )
-
-
-list(APPEND CMAKE_REQUIRED_LIBRARIES ZLIB::ZLIB)
-check_include_files(stdint.h CHECK_ZLIB_AND_STDINT)
-
-
-if(NOT ${CHECK_ZLIB_AND_STDINT})
-  message(FATAL_ERROR "ZLIB was not build in configure")
-endif()
