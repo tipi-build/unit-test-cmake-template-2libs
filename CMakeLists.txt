@@ -12,6 +12,7 @@ include(CheckIncludeFiles)
 
 # this should be provided by Hermetic FetchContent
 find_package(HfcDependencyProvidedLib REQUIRED)
+message(STATUS "[hfc_test] HfcDependencyProvidedLib_VERSION=${HfcDependencyProvidedLib_VERSION}")
 
 add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
 
